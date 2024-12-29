@@ -8,6 +8,7 @@ const colorPalettes = [
     ['#2D5A27', '#8DB580', '#E3DCD2', '#5C4033'], // Pine, Sage, Birch, Brown
     ['#2B2D42', '#8D99AE', '#EDF2F4', '#EF233C'], // Navy, Steel, Frost, Red
 ];
+let selectedColorBox = null; // Variable to track the currently selected color box
 
 function setup() {
     canvas = createCanvas(600, 400);
@@ -174,8 +175,18 @@ function createPaletteButtons() {
             colorBox.style.margin = '2px'; // Margin between boxes
             colorBox.style.cursor = 'pointer';
             colorBox.onclick = () => {
-                currentColor = color; // Set currentColor to the clicked color
+                // Remove highlight from the previously selected color box
+                if (selectedColorBox) {
+                    selectedColorBox.style.border = ''; // Reset border
+                }
+
+                // Set currentColor to the clicked color
+                currentColor = color;
                 console.log("Selected color:", currentColor);
+
+                // Highlight the currently selected color box
+                selectedColorBox = colorBox; // Update the selected color box
+                selectedColorBox.style.border = '2px solid black'; // Highlight with a border
             };
             paletteDiv.appendChild(colorBox);
         });
