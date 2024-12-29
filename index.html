@@ -32,12 +32,16 @@
     <input type="file" id="imageInput" accept="image/*">
     <input type="color" id="colorPicker" value="#ff0000">
   </div>
-  <div id="canvas-container"></div>
-  <script src="sketch.js"></script>
   <div class="image-selection">
-      <h5>Select a Default Image:</h5>
+      <h5>Select a default image:</h5>
       <img src="images/cat.jpg" alt="Cat" class="selectable-image" onclick="selectImage('images/cat.jpg')" style="width: 100px; height: auto;">
       <img src="images/grid.jpg" alt="Grid" class="selectable-image" onclick="selectImage('images/grid.jpg')"style="width: 100px; height: auto;">
   </div>
+  <div class="color-selection">
+    <h5>Some color choices:</h5>
+    <div id="paletteContainer"></div>
+  </div>
+  <div id="canvas-container"></div>
+  <script src="sketch.js"></script>
 </body>
 </html>

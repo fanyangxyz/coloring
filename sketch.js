@@ -3,6 +3,11 @@ let edgeImg;
 let currentColor;
 let isProcessed = false;
 let canvas;
+const colorPalettes = [
+    ['#FF7E5F', '#FEB47B', '#FFE66D', '#76C1D4'], // Coral, Peach, Yellow, Ocean
+    ['#2D5A27', '#8DB580', '#E3DCD2', '#5C4033'], // Pine, Sage, Birch, Brown
+    ['#2B2D42', '#8D99AE', '#EDF2F4', '#EF233C'], // Navy, Steel, Frost, Red
+];
 
 function setup() {
     canvas = createCanvas(600, 400);
@@ -18,6 +23,7 @@ function setup() {
         currentColor = color(event.target.value);
     });
     currentColor = color('#ff0000');
+    createPaletteButtons();
     
     noLoop();
 }
@@ -151,4 +157,36 @@ function mousePressed() {
         floodFill(mouseX, mouseY, currentColor);
     }
     image(edgeImg, 0, 0, edgeImg.width, edgeImg.height);
+}
+
+function createPaletteButtons() {
+    const paletteContainer = document.getElementById('paletteContainer');
+    colorPalettes.forEach(palette => {
+        const paletteDiv = document.createElement('div');
+        paletteDiv.className = 'palette';
+        paletteDiv.style.display = 'flex';
+
+        palette.forEach(color => {
+            const colorBox = document.createElement('div');
+            colorBox.style.backgroundColor = color;
+            colorBox.style.width = '30px'; // Width of each color box
+            colorBox.style.height = '30px'; // Height of each color box
+            colorBox.style.margin = '2px'; // Margin between boxes
+            colorBox.style.cursor = 'pointer';
+            colorBox.onclick = () => {
+                currentColor = color; // Set currentColor to the clicked color
+                console.log("Selected color:", currentColor);
+            };
+            paletteDiv.appendChild(colorBox);
+        });
+
+        paletteContainer.appendChild(paletteDiv);
+    });
+}
+
+function selectPalette(palette) {
+    // Logic to use the selected color from the palette
+    // Assuming you want to select the first color in the palette for simplicity
+    currentColor = color(palette[0]); // Set currentColor to the first color in the selected palette
+    console.log("Selected color:", currentColor);
 }
