@@ -185,8 +185,6 @@ function createPaletteButtons() {
 }
 
 function selectPalette(palette) {
-    // Logic to use the selected color from the palette
-    // Assuming you want to select the first color in the palette for simplicity
-    currentColor = color(palette[0]); // Set currentColor to the first color in the selected palette
+    currentColor = color(palette[0]);
     console.log("Selected color:", currentColor);
 }
