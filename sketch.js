@@ -22,6 +22,15 @@ function setup() {
     noLoop();
 }
 
+function selectImage(imagePath) {
+    currentImage = imagePath;
+    console.log("Selected image:", currentImage);
+    loadImage(currentImage, (loadedImg) => {
+        img = loadedImg;
+        processImage();
+    });
+}
+
 function handleFileSelect(event) {
     const file = event.target.files[0];
     if (file) {
