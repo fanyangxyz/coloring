@@ -54,7 +54,7 @@ function handleFileSelect(event) {
 
 function processImage() {
     // Resize image to fit canvas while maintaining aspect ratio
-    const scale = Math.min(600 / img.width, 400 / img.height);
+    const scale = Math.min(1000 / img.width, 800 / img.height);
     const newWidth = img.width * scale;
     const newHeight = img.height * scale;
     
